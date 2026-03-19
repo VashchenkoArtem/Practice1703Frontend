@@ -3,7 +3,7 @@ import { StepOneForm } from "../models/types/register.types"
 export function useStepOne() {
     async function registerSend(data: StepOneForm) {
         try { 
-            const response = await fetch('http://localhost:8000/registration', {
+            const response = await fetch('http://localhost:8000/register', {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {'Content-Type': 'application/json'}

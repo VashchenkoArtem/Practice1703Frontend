@@ -1,4 +1,5 @@
 export const COLORS = {
+	backgroundPrimary: "#FFFFFF",
 	bisquePrimary: "#FCECDD",
 	bisqueSecondary: "#FFD9B3",
 	black: "#000000",

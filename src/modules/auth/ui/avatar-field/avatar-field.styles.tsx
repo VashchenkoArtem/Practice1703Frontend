@@ -1,31 +1,31 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-        ContainerAvatar: {
-        width: 95,
-        height: 104,
-        gap: 5,
-
-    },
-    AvatarView:{
+    ContainerAvatar: {
         alignItems: "center",
+        gap: 10,
+    },
+    AvatarView: {
+        width: 90,
+        height: 90,
+        borderRadius: 50,
+        backgroundColor: "#EAEAEA",
         justifyContent: "center",
+        alignItems: "center",
+        overflow: "hidden",
     },
-    DefaultAvatar:{
+    SelectedAvatar: {
+        width: "100%",
+        height: "100%",
+    },
+    DefaultAvatar: {
+        width: "100%",
+        height: "100%",
         position: "absolute",
-        top: 0,
-        left: 0,
-
     },
-    DefaulText:{
+    DefaultText: {
         fontSize: 16,
-        color: "#000000",
-        width: 95,
-        height: 24,
-        
-
-
+        fontWeight: "500",
+        color: "#000",
     }
-}
-
-)
+});
