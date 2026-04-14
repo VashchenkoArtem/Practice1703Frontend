@@ -1,3 +1,4 @@
+import React from "react";
 import { ErrorIcon } from "./_icons/error";
 import { EyeClosedIcon } from "./_icons/eye-closed";
 import { EyeOpenIcon } from "./_icons/eye-open";

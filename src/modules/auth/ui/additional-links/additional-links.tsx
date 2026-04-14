@@ -1,3 +1,4 @@
+import React from "react";
 import { View, Text } from "react-native";
 import { styles } from "./additional-links.styles";
 import { Link } from "expo-router";

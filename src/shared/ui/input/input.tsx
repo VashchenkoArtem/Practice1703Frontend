@@ -2,7 +2,7 @@ import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { InputPasswordProps, InputProps } from "./input.types";
 import { ICONS } from "../icons";
 import { styles } from "./input.styles";
-import { useState } from "react";
+import React, { useState } from "react";
 
 export function Input(props: InputProps) {
 	const {

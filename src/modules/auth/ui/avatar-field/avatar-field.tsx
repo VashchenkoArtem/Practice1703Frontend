@@ -1,3 +1,4 @@
+import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { ICONS } from "@shared/ui";
 import * as ImagePicker from "expo-image-picker";

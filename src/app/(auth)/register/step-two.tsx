@@ -1,9 +1,11 @@
+
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, View, Image } from "react-native";
 import { AdditionalLinks, WelcomeBlock } from "@modules/auth";
 import { KeyboardAwareScrollView, KeyboardProvider } from "react-native-keyboard-controller";
 import { RegisterStepTwoForm } from "@modules/auth/ui/register-step-two-form/register-step-two-form";
 import { COLORS } from "@shared/constants";
+
 
 export default function StepTwo() {
     return (

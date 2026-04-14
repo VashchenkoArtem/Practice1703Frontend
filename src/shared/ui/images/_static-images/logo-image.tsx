@@ -1,3 +1,4 @@
+import React from "react";
 import { Image, type ImageProps } from "expo-image";
 
 export function LogoImage(props: ImageProps) {

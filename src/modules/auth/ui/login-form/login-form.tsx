@@ -2,13 +2,16 @@ import { View } from "react-native";
 import { styles } from "./login-form.styles";
 import { Button, ICONS, Input } from "@shared/ui";
 import { Controller, useForm } from "react-hook-form";
-import { ReactNode } from "react";
+
 import { loginValidator } from "@modules/auth/models/lib/login.validation";
 import {yupResolver} from "@hookform/resolvers/yup"
 import { useRouter } from "expo-router";
 import { useLogin } from "@modules/auth/hooks/login";
-import React from "react";
+
 import { useLoginMutation } from "@modules/auth/api/userApi";
+
+import { useUserContext } from "@modules/auth/context/user";
+
 interface LoginForm {
 	email: string;
 	password: string
@@ -18,8 +21,16 @@ interface LoginForm {
 export function LoginForm() {
 	const { handleSubmit, control, formState } = useForm<LoginForm>({resolver: yupResolver(loginValidator)})
 	const [ login ] = useLoginMutation()
+	const { setToken } = useUserContext()
 	async function onSubmit(data: LoginForm){
-		login(data);
+		try{
+			const { token } = await login(data).unwrap()
+			setToken(token)
+		}
+		catch(error){
+
+			console.log(error)
+		}
 	}
 
 	return (

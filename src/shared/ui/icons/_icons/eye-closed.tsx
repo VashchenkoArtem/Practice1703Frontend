@@ -1,3 +1,4 @@
+import React from "react";
 import Svg, { Path, SvgProps } from "react-native-svg";
 
 export function EyeClosedIcon(props: SvgProps) {

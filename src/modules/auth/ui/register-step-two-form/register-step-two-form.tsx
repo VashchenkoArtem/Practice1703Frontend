@@ -4,25 +4,35 @@ import { useRouter, useLocalSearchParams } from "expo-router";
 import { Controller, useForm } from "react-hook-form";
 import { stepTwoValidator } from "@modules/auth/models/lib/register/step.two.validation";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { StepTwoForm } from "@modules/auth/models/types/register.types";
+import type { StepTwoForm } from "@modules/auth/models/types/register.types";
 import { styles } from "./register-step-two-form.styles";
 import { AvatarField } from "../avatar-field/avatar-field";
-import React from "react";
 import { BaseApi } from "@shared/api/baseApi";
 import { userApi, useRegisterMutation } from "@modules/auth/api/userApi";
+import { useUserContext } from "@modules/auth/context/user";
 
 export function RegisterStepTwoForm() {
-    const params = useLocalSearchParams<{email: string, username: string, password: string}>();
+    const params = useLocalSearchParams<{
+        email: string;
+        username: string;
+        password: string;
+    }>();
     const router = useRouter();
-    const formData = new FormData();
-    const [ register ] = useRegisterMutation()
+    const [register] = useRegisterMutation();
     const { control, handleSubmit } = useForm<StepTwoForm>({
-        resolver: yupResolver(stepTwoValidator)
+        resolver: yupResolver(stepTwoValidator),
     });
+    const { token, setToken } = useUserContext();
     
     async function onSubmit(data: StepTwoForm) {
-        await register({...data, ...params})
-        console.log("edsdad")
+        try {
+            const { token } = await register({ ...data, ...params }).unwrap();
+            setToken(token);
+
+        } catch (error) {
+            console.log(error);
+            return;
+        }
     }
 
     return (
@@ -61,10 +71,7 @@ export function RegisterStepTwoForm() {
                         name="avatar"
                         control={control}
                         render={({ field }) => (
-                            <AvatarField 
-                                value={field.value} 
-                                onChange={field.onChange} 
-                            />
+                            <AvatarField value={field.value} onChange={field.onChange} />
                         )}
                     />
                 </View>

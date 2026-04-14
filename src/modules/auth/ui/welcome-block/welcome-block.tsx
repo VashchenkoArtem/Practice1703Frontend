@@ -1,3 +1,4 @@
+import React from "react";
 import { IMAGES } from "@shared/ui";
 import { View, Text } from "react-native";
 import { styles } from "./welcome-block.styles";
