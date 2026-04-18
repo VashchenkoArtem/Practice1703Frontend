@@ -1,6 +1,7 @@
 import { UserContextProvider } from '@modules/auth/context/user';
 import { ApiProvider } from '@reduxjs/toolkit/query/react';
 import { BaseApi } from '@shared/api/baseApi';
+import { Headers } from '@shared/ui/header/Header';
 import { Stack } from 'expo-router'
 
 import { SafeAreaProvider } from "react-native-safe-area-context";

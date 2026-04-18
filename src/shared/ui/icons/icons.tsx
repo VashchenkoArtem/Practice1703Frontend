@@ -10,6 +10,8 @@ import { ContactsIcon } from "./_icons/contacts";
 import { SettingsIcon } from "./_icons/settings";
 import { ChatsIcon } from "./_icons/chats";
 import { ProfileIcon } from "./_icons/profile";
+import { logoIcon } from "./_icons/logo";
+import { plusIcon } from "./_icons/plus";
 
 export const ICONS = {
 	MailIcon,
@@ -22,5 +24,7 @@ export const ICONS = {
 	ContactsIcon,
 	SettingsIcon,
 	ChatsIcon,
-	ProfileIcon
+	ProfileIcon,
+	logoIcon,
+	plusIcon
 };

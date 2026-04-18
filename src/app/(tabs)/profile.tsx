@@ -1,9 +1,9 @@
 import { View, Text } from "react-native"
-
+import { Headers } from "@shared/ui/header/Header"
 export default function profileTabs () {
     return(
         <View>
-            <Text>Profile Page</Text>
+            <Headers text = "Profile" isIconLeft={true}></Headers>
         </View>
     )
 }

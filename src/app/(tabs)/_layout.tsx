@@ -1,12 +1,14 @@
 import { ICONS } from "@shared/ui";
 import { Tabs } from "expo-router"
 import { SafeAreaView } from "react-native-safe-area-context"
+import { Headers } from "@shared/ui/header/Header";
 
 export default function TabLayout() {
 	return (
 		<SafeAreaView style={{ flex: 1, backgroundColor: "#FFD9B3" }}>
 			<Tabs
             	screenOptions={{
+
                 headerShown: false,
                 tabBarItemStyle: {
                     justifyContent: "center",

@@ -7,7 +7,7 @@ export interface InputProps extends TextInputProps {
     label?: string,
     labelStyle?: TextStyle,
     inputContainerStyle?: ViewStyle,
-    error?: string | null
+    error?: string | null,
 }
 
 export type InputPasswordProps = Omit<InputProps, "iconRight" | "iconLeft">

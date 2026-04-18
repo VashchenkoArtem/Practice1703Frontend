@@ -1,9 +1,10 @@
 import { View, Text } from "react-native"
+import { Headers } from "@shared/ui/header/Header"
 
 export default function settingsTabs () {
     return(
         <View>
-            <Text>Settings Page</Text>
+            <Headers text = "Settings" isIconLeft={true}/>
         </View>
     )
 }

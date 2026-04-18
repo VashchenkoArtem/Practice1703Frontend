@@ -1,9 +1,10 @@
 import { View, Text } from "react-native"
+import { Headers } from "@shared/ui/header/Header"
 
 export default function contactsTabs () {
     return(
         <View>
-            <Text>Contacts Page</Text>
+            <Headers text = "Contacts" isIconLeft={true} isIconRight={true}/>
         </View>
     )
 }

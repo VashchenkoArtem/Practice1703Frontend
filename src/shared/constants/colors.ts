@@ -1,5 +1,6 @@
 export const COLORS = {
 	backgroundPrimary: "#FFFFFF",
+	greyBackground: "#F5F5F5",
 	bisquePrimary: "#FCECDD",
 	bisqueSecondary: "#FFD9B3",
 	black: "#000000",

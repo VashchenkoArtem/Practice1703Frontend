@@ -27,4 +27,10 @@ export const styles = StyleSheet.create({
 		color: COLORS.error,
 		fontSize: FONT_SIZE.titleMedium,
 	},
+	chatInputContainer: {
+		backgroundColor: COLORS.greyBackground,
+		height: 40,
+		borderRadius: 16,
+		marginHorizontal: 10
+	}
 });

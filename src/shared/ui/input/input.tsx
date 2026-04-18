@@ -62,5 +62,11 @@ function Password (props: InputProps) {
 		
 	)
 }
-
+function ChatInput (){
+	return (
+		<Input inputContainerStyle={styles.chatInputContainer} iconLeft={<ICONS.SearchingGlassIcon width={24} height={24}/>} placeholder="Search">
+		</Input>
+	)
+}
 Input.Password = Password
+Input.ChatInput = ChatInput
