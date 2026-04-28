@@ -11,11 +11,6 @@ export const contactsApi = BaseApi.injectEndpoints({
                 url: `contacts/${id}`
             })
         }),
-        // findContactsByName: builder.query<IContact, void>({
-        //     query: (name) => ({
-        //         url: `contacts/${name}`
-        //     })
-        // }),
         createContact: builder.mutation<IContact, void>({
             query: (body) => ({
                 url: "contacts",
@@ -29,7 +24,6 @@ export const contactsApi = BaseApi.injectEndpoints({
 export const {
     useGetUsersQuery,
     useFindContactsByIdQuery,
-    // useFindContactsByNameQuery,
     useCreateContactMutation
 } = contactsApi
 

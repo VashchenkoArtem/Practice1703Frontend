@@ -5,7 +5,7 @@ import { Controller, useForm } from "react-hook-form";
 
 import { loginValidator } from "@modules/auth/models/lib/login.validation";
 import {yupResolver} from "@hookform/resolvers/yup"
-import { useRouter } from "expo-router";
+import { Redirect, useRouter } from "expo-router";
 import { useLogin } from "@modules/auth/hooks/login";
 import { useState } from "react";
 

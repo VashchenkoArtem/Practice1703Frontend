@@ -12,6 +12,7 @@ import { ChatsIcon } from "./_icons/chats";
 import { ProfileIcon } from "./_icons/profile";
 import { logoIcon } from "./_icons/logo";
 import { plusIcon } from "./_icons/plus";
+import { BackIcon } from "./_icons/back";
 
 export const ICONS = {
 	MailIcon,
@@ -26,5 +27,6 @@ export const ICONS = {
 	ChatsIcon,
 	ProfileIcon,
 	logoIcon,
-	plusIcon
+	plusIcon,
+	BackIcon
 };

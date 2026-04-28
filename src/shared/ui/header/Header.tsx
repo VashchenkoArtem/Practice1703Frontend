@@ -3,9 +3,10 @@ import { IProps } from "./types";
 import { ICONS } from "../icons";
 import { Input } from "../input";
 import { styles } from "./style";
+import { Button } from "../button/button";
 
 export function Headers(props:IProps){
-    const {isIconLeft, isIconRight, isInput, text, search, setSearch } = props
+    const {isIconLeft, isIconRight, isInput, text, search, setSearch, setIsModalVisible } = props
     return (
         <View style = {styles.headersContainer}>
             <View style = {[styles.header]}>
@@ -16,7 +17,7 @@ export function Headers(props:IProps){
                     { text}
                 </Text>
                 {isIconRight && 
-                    <ICONS.plusIcon/>
+                    <ICONS.plusIcon onPress={() => {setIsModalVisible && setIsModalVisible(true)}}/>   
                 }
             </View>
             {isInput && 

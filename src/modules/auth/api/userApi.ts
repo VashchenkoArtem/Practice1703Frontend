@@ -2,6 +2,7 @@ import { BaseApi } from "@shared/api/baseApi";
 import { ILogin, IUser } from "@shared/types/user.types";
 import { IRegister, LoginResponse } from "./api.types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { IContact } from "@modules/contacts/api/contacts.types";
 
 
 
@@ -43,9 +44,12 @@ export const userApi = BaseApi.injectEndpoints({
 			},
 		}),
 		me: builder.query<IUser, void>({
-			query: () => "/users/me",
-
-			
+			query: () => "/users/me",			
+		}),
+		findUserByName: builder.query<IUser, string>({
+			query: (name) => ({
+				url: `/users/username/${name}`
+			})
 		}),
 	}),
 	overrideExisting: false,
@@ -54,4 +58,5 @@ export const {
 	useLoginMutation,
 	useRegisterMutation,
 	useMeQuery,
+	useLazyFindUserByNameQuery
 } = userApi;

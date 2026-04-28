@@ -27,7 +27,6 @@ export function UserContextProvider({ children }: { children: ReactNode }) {
     const hasToken = token ? true : false
     const { data } = useMeQuery(undefined, { skip: !hasToken })
 
-
     useEffect(() => {
         const getToken = async () => {
             const token = await AsyncStorage.getItem("token");

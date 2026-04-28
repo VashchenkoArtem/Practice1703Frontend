@@ -4,7 +4,9 @@ export interface IProps{
     isIconRight?: boolean,
     isInput?: boolean,
     search?: string | null,
-    setSearch?: (text: string) => void
+    setSearch?: (text: string) => void,
+    setIsModalVisible?: (type: boolean) => void
+    
 }
 
 

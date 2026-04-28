@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         height: 60,
+        // paddingHorizontal:10
     },
     headerTextWithoutIconRight: {
         width: "100%"
