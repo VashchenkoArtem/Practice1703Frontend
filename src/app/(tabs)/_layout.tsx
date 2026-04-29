@@ -2,8 +2,14 @@ import { ICONS } from "@shared/ui";
 import { Tabs } from "expo-router"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { Headers } from "@shared/ui/header/Header";
+import { useContactsHeader } from "@modules/contacts/context/contact";
 
 export default function TabLayout() {
+    const {
+        search,
+        setSearch,
+        setIsModalVisible
+    } = useContactsHeader();
 	return (
 		<SafeAreaView style={{ flex: 1, backgroundColor: "#FFD9B3" }}>
 			<Tabs
@@ -30,6 +36,18 @@ export default function TabLayout() {
                         tabBarLabel: "Contacts",
                         tabBarIcon: ({ color }) => (
                             <ICONS.ContactsIcon color={color} />
+                        ),
+                        headerShown: true,
+                        header: () => (
+                            <Headers
+                                text="Contacts"
+                                isIconLeft={true}
+                                isIconRight={true}
+                                isInput={true}
+                                search={search}
+                                setSearch={setSearch}
+                                setIsModalVisible={setIsModalVisible}
+                            />
                         )
                     }}
                 />

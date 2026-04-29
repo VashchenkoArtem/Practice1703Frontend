@@ -1,4 +1,5 @@
 import { UserContextProvider } from '@modules/auth/context/user';
+import { ContactsHeaderProvider } from '@modules/contacts/context/contact';
 import { ApiProvider } from '@reduxjs/toolkit/query/react';
 import { BaseApi } from '@shared/api/baseApi';
 import { Headers } from '@shared/ui/header/Header';
@@ -11,13 +12,15 @@ export default function RootLayout() {
         <SafeAreaProvider>
             <ApiProvider api = {BaseApi}>
                 <UserContextProvider>
-                    <Stack screenOptions={{
-                        headerShown: false
-                    }}>
-                        <Stack.Screen name='index' />
-                        <Stack.Screen name='(auth)' />
-                        <Stack.Screen name = "(tabs)"/>
-                    </Stack>
+                    <ContactsHeaderProvider>
+                        <Stack screenOptions={{
+                            headerShown: false
+                        }}>
+                            <Stack.Screen name='index' />
+                            <Stack.Screen name='(auth)' />
+                            <Stack.Screen name = "(tabs)"/>
+                        </Stack>
+                    </ContactsHeaderProvider>
                 </UserContextProvider>
             </ApiProvider>
         </SafeAreaProvider>

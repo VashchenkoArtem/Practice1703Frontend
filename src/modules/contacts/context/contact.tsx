@@ -19,7 +19,7 @@ export function ContactsHeaderProvider({
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     return (
-        <ContactsHeaderContext.Provider
+        <ContactsHeaderContext
             value={{
                 search,
                 setSearch,
@@ -28,7 +28,7 @@ export function ContactsHeaderProvider({
             }}
         >
             {children}
-        </ContactsHeaderContext.Provider>
+        </ContactsHeaderContext>
     );
 }
 

@@ -13,11 +13,16 @@ import { ICONS } from "@shared/ui/icons"
 import { Controller, useForm } from "react-hook-form";
 import { useRouter } from "expo-router"
 import { useLazyFindUserByNameQuery } from "@modules/auth/api/userApi"
+import { useContactsHeader } from "@modules/contacts/context/contact"
 
 
 export function ContactsPage(){
-    const [ search, setSearch ] = useState<string | null>(null)
-    const [isModalVisible, setIsModalVisible] = useState<boolean>(false)
+    const {
+        search,
+        setSearch,
+        isModalVisible, 
+        setIsModalVisible
+    } = useContactsHeader();
     const [ getUser, { data: userData, reset }] = useLazyFindUserByNameQuery()
     const [username, setUsername] = useState<string>("")
     const { data } = useGetUsersQuery(undefined, {
