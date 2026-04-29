@@ -39,7 +39,9 @@ export default function TabLayout() {
                         tabBarLabel: "Chats",
                         tabBarIcon: ({ color }) => (
                             <ICONS.ChatsIcon color={color} />
-                        )
+                        ),
+                        headerShown: true,
+                        header: () => <Headers text = "Chats" isIconLeft={true} isIconRight={true} isInput={true}/>
                     }}
                 />
                 <Tabs.Screen
@@ -48,7 +50,9 @@ export default function TabLayout() {
                         tabBarLabel: "Profile",
                         tabBarIcon: ({ color }) => (
                             <ICONS.ProfileIcon color={color} />
-                        )
+                        ),
+                        headerShown: true,
+                        header: () => <Headers text = "Profile" isIconLeft={true}></Headers>
                     }}
                 />
                 <Tabs.Screen
@@ -57,7 +61,9 @@ export default function TabLayout() {
                         tabBarLabel: "Settings",
                         tabBarIcon: ({ color }) => (
                             <ICONS.SettingsIcon color={color} />
-                        )
+                        ),
+                        headerShown: true,
+                        header: () => <Headers text = "Settings" isIconLeft={true}/>
                     }}
                 />
 			</Tabs>

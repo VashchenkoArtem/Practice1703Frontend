@@ -3,7 +3,6 @@ import { IProps } from "./types";
 import { ICONS } from "../icons";
 import { Input } from "../input";
 import { styles } from "./style";
-import { Button } from "../button/button";
 
 export function Headers(props:IProps){
     const {isIconLeft, isIconRight, isInput, text, search, setSearch, setIsModalVisible } = props

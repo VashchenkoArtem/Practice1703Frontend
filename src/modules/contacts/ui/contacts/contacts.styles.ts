@@ -13,27 +13,26 @@ export const styles = StyleSheet.create({
     modalPage: {
         flexDirection: 'column',
         justifyContent: 'flex-start',
-        gap: 30,// 
+        gap: 30,
     },
 
     contactAvatarContainer: {
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: 5,
-        flex: 1
+        alignItems: "center",
+        padding: 20,
+        width: 200
     },
 
     contactAvatar: {
         borderRadius: 25
     },
+    username: {
+        fontSize: 22,
+        fontWeight: 400,
+    },
 
     inputContainer: {
-        // flexDirection: 'column',
-        // justifyContent: 'flex-start',
-        // gap: 30,
         marginVertical: 20,
-        marginHorizontal: 10,
+        alignItems: "center",
     },
 
     modalHeader: {
@@ -62,13 +61,21 @@ export const styles = StyleSheet.create({
     },
 
     inputContactName: {
-        
         backgroundColor: COLORS.bisquePrimary,
-        width: '100%',
         height: 52,
         paddingHorizontal: 10,
         paddingVertical: 10,
         // margin: 10
-
+    },
+    labelInputName: {
+        marginLeft: 10,
+        fontSize: 22,
+        fontWeight: 400
+    },
+    avatarAndName: {
+        alignItems: "center",
+        paddingBottom: 20,
+        borderBottomColor: COLORS.grey,
+        borderBottomWidth: 1
     }
 })

@@ -41,8 +41,7 @@ export function ContactsPage(){
         
     }
     return (
-        <>
-            <Headers text = "Contacts" isIconLeft={true} isIconRight={true} isInput={true} setSearch={setSearch} search={search} setIsModalVisible={setIsModalVisible}/>
+        <View>
             <FlatList style = {{paddingHorizontal: 10, paddingVertical: 5, gap: 5}} 
                 data={ search ? filteredContacts : data}
                 renderItem={(contact) => (
@@ -61,7 +60,6 @@ export function ContactsPage(){
                     )
                 })} */}
             </FlatList>
-            
             <Modal
                 isVisible={isModalVisible}
                 swipeDirection='up'
@@ -75,44 +73,43 @@ export function ContactsPage(){
                         <Text style={styles.headerTitle}>Find User</Text>
                         <View />
                     </View>
+                    <Input
+                        autoCapitalize="none"
+                        autoComplete="off"                
+                        placeholder="Username"
+                        iconLeft={<ICONS.SearchingGlassIcon />}
+                        label="Username"
+                        onChangeText={(text) => {
+                            setUsername(text)
+                        }}
+                        inputContainerStyle={styles.inputContainerContact}
+                        style={styles.inputContactName}
+                        labelStyle={styles.labelInputName}
+                    />
                     <View style={styles.inputContainer}>
-                        
-                        <Input
-                            autoCapitalize="none"
-                            autoComplete="off"                
-                            placeholder="Username"
-                            iconLeft={<ICONS.SearchingGlassIcon />}
-                            label="Username"
-                            defaultValue={username}
-                            onChangeText={(text) => {
-                                setUsername(text)
-                            }}
-                            inputContainerStyle={styles.inputContainerContact}
-                            style={styles.inputContactName}
-                        />
-                        
                         <View style={styles.contactAvatarContainer}>
-                            <Image
-                                source={{
-                                    uri: `http://192.168.0.104:3000/media/thumb/${userData?.avatar}`
-                                }}
-                                width={150}
-                                height={150}
-                                style={styles.contactAvatar}
-                            
-                            />
+                            { userData && 
+                                <View style = {styles.avatarAndName}>
+                                    <Image
+                                        source={{
+                                            uri: `http://192.168.0.112:3000/media/thumb/${userData?.avatar}`
+                                        }}
+                                        width={150}
+                                        height={150}
+                                        style={styles.contactAvatar}
+                                    />
+                                    <Text style={styles.username}>{userData?.username}</Text>
+                                </View>
+                            }
                             </View>
-                            <Text>{userData?.name}</Text>
                             <Button title={"Select"} 
-                                    onPress={() => {
-                                        getUser(username)
-                                    }}
-                        />
+                                onPress={() => {
+                                    getUser(username)
+                                }}
+                            />
                     </View>
-                </View>
-
-                    
+                </View> 
             </Modal>
-        </>
+        </View>
     )
 }

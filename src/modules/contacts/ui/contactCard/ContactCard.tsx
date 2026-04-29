@@ -8,7 +8,7 @@ export function ContactCard(props: Contact){
         <View style = {styles.contactCard}>
             <Image
                 source={{
-                    uri: `http://192.168.0.104:3000/media/thumb/${avatar}`
+                    uri: `http://192.168.0.112:3000/media/thumb/${avatar}`
                 }}
                 width={50}
                 height={50}
