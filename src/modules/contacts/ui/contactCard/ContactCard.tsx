@@ -1,6 +1,7 @@
 import { View, Text, Image } from "react-native"
 import { styles } from "./contactCard.styles"
 import { Contact } from "./types"
+import { SERVER } from "@shared/constants"
 
 export function ContactCard(props: Contact){
     const {localName, avatar} = props
@@ -8,7 +9,7 @@ export function ContactCard(props: Contact){
         <View style = {styles.contactCard}>
             <Image
                 source={{
-                    uri: `http://192.168.0.112:3000/media/thumb/${avatar}`
+                    uri: `http://${SERVER.host}:${SERVER.port}/media/thumb/${avatar}`
                 }}
                 width={50}
                 height={50}

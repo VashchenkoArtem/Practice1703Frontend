@@ -14,29 +14,29 @@ import { Controller, useForm } from "react-hook-form";
 import { useRouter } from "expo-router"
 import { useLazyFindUserByNameQuery } from "@modules/auth/api/userApi"
 import { useContactsHeader } from "@modules/contacts/context/contact"
+import { COLORS, SERVER } from "@shared/constants"
+import { useUserContext } from "@modules/auth/context/user"
 
 
 export function ContactsPage(){
     const {
         search,
-        setSearch,
         isModalVisible, 
         setIsModalVisible
     } = useContactsHeader();
-    const [ getUser, { data: userData, reset }] = useLazyFindUserByNameQuery()
+    const { user } = useUserContext()
+    const [ getUser, { data: userData, reset, error, isError}] = useLazyFindUserByNameQuery()
     const [username, setUsername] = useState<string>("")
     const { data } = useGetUsersQuery(undefined, {
         pollingInterval: 3000
     })
-    
     useEffect(() => {
-        if (!username) {
+        if (!username || username === user?.username) {
             reset()
             return
         }
         getUser(username)
     }, [username])
-
     if (!data) return null
     let filteredContacts = [] as IContact[]
     if ( search) {
@@ -86,18 +86,28 @@ export function ContactsPage(){
                         label="Username"
                         onChangeText={(text) => {
                             setUsername(text)
+                            if (isError){
+                                reset()
+                                return
+                            }
                         }}
                         inputContainerStyle={styles.inputContainerContact}
                         style={styles.inputContactName}
                         labelStyle={styles.labelInputName}
                     />
                     <View style={styles.inputContainer}>
+                        { isError && 
+                            <Text style = {{color: COLORS.inputError, fontSize: 22}}>{(error as any).data}</Text>
+                        }
+                        { username === user?.username && 
+                            <Text style = {{color: COLORS.inputError, fontSize: 22}}>You can't add yourself in conctacts</Text>
+                        }
                         <View style={styles.contactAvatarContainer}>
                             { userData && 
                                 <View style = {styles.avatarAndName}>
                                     <Image
                                         source={{
-                                            uri: `http://192.168.0.112:3000/media/thumb/${userData?.avatar}`
+                                            uri: `http://${SERVER.host}:${SERVER.port}/media/thumb/${userData?.avatar}`
                                         }}
                                         width={150}
                                         height={150}
@@ -107,11 +117,14 @@ export function ContactsPage(){
                                 </View>
                             }
                             </View>
-                            <Button title={"Select"} 
+                            <Button 
+                                title={"Select"} 
+                                disabled = {userData ? false : true}
                                 onPress={() => {
                                     getUser(username)
                                 }}
                             />
+
                     </View>
                 </View> 
             </Modal>
