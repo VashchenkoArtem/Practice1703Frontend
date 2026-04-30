@@ -16,6 +16,7 @@ import { useLazyFindUserByNameQuery } from "@modules/auth/api/userApi"
 import { useContactsHeader } from "@modules/contacts/context/contact"
 import { COLORS, SERVER } from "@shared/constants"
 import { useUserContext } from "@modules/auth/context/user"
+import { CreateContactForm } from "../createContactForm/CreateContactForm"
 
 
 export function ContactsPage(){
@@ -27,6 +28,7 @@ export function ContactsPage(){
     const { user } = useUserContext()
     const [ getUser, { data: userData, reset, error, isError}] = useLazyFindUserByNameQuery()
     const [username, setUsername] = useState<string>("")
+    const [ isModalCreateVisible, setIsModalCreateVisible ] = useState<boolean>(false)
     const { data } = useGetUsersQuery(undefined, {
         pollingInterval: 3000
     })
@@ -41,7 +43,7 @@ export function ContactsPage(){
     let filteredContacts = [] as IContact[]
     if ( search) {
         filteredContacts = data.filter((contact) => {
-            return contact.localName.toLowerCase().includes(search.toLowerCase())
+            return contact.contactName.toLowerCase().includes(search.toLowerCase())
         })
         
     }
@@ -52,7 +54,7 @@ export function ContactsPage(){
                 renderItem={(contact) => (
                     <View key={contact.item.id}>
                         <TouchableOpacity onPress={() => console.log("touched")}>
-                            <ContactCard localName={contact.item.localName} avatar={contact.item.avatar} addedAt={contact.item.addedAt}/>
+                            <ContactCard localName={contact.item.contactName} avatar={contact.item.avatar} addedAt={contact.item.addedAt}/>
                         </TouchableOpacity>
                     </View>
                 )}
@@ -121,13 +123,14 @@ export function ContactsPage(){
                                 title={"Select"} 
                                 disabled = {userData ? false : true}
                                 onPress={() => {
-                                    getUser(username)
+                                    setIsModalCreateVisible(true)
                                 }}
                             />
 
                     </View>
                 </View> 
             </Modal>
+            <CreateContactForm user={userData} isModalCreateVisible={isModalCreateVisible} setIsModalVisible={setIsModalVisible} setIsModalCreateVisible={setIsModalCreateVisible}/>
         </View>
     )
 }

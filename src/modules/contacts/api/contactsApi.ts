@@ -1,5 +1,5 @@
 import { BaseApi } from "@shared/api/baseApi";
-import { IContact } from "./contacts.types";
+import { IContact, ICreateContact } from "./contacts.types";
 
 export const contactsApi = BaseApi.injectEndpoints({
     endpoints:(builder) => ({
@@ -11,12 +11,13 @@ export const contactsApi = BaseApi.injectEndpoints({
                 url: `contacts/${id}`
             })
         }),
-        createContact: builder.mutation<IContact, void>({
-            query: (body) => ({
+        createContact: builder.mutation<void,  ICreateContact | FormData>({
+            query: (body) => {
+                return {
                 url: "contacts",
                 method: "POST",
                 body
-            })
+            }}
         })
     })
 })
