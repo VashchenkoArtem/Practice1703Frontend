@@ -3,6 +3,7 @@ import { Tabs } from "expo-router"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { Headers } from "@shared/ui/header/Header";
 import { useContactsHeader } from "@modules/contacts/context/contact";
+import { useChatsHeader } from "@modules/chats/context/chat";
 
 export default function TabLayout() {
     const {
@@ -10,6 +11,7 @@ export default function TabLayout() {
         setSearch,
         setIsModalVisible
     } = useContactsHeader();
+    const { setChatSearch, chatSearch } = useChatsHeader()
 	return (
 		<SafeAreaView style={{ flex: 1, backgroundColor: "#FFD9B3" }}>
 			<Tabs
@@ -59,7 +61,15 @@ export default function TabLayout() {
                             <ICONS.ChatsIcon color={color} />
                         ),
                         headerShown: true,
-                        header: () => <Headers text = "Chats" isIconLeft={true} isIconRight={true} isInput={true}/>
+                        header: () => 
+                        <Headers text = "Chats"
+                            isIconLeft={true}
+                            isIconRight={true} 
+                            isInput={true}
+                            isChatFiltration={true}
+                            chatSearch={chatSearch}
+                            setChatSearch={setChatSearch}
+                            />
                     }}
                 />
                 <Tabs.Screen
@@ -70,7 +80,11 @@ export default function TabLayout() {
                             <ICONS.ProfileIcon color={color} />
                         ),
                         headerShown: true,
-                        header: () => <Headers text = "Profile" isIconLeft={true}></Headers>
+                        header: () => 
+                        <Headers 
+                            text = "Profile" 
+                            isIconLeft={true}
+                            ></Headers>
                     }}
                 />
                 <Tabs.Screen

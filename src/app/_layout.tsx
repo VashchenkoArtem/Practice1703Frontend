@@ -1,4 +1,5 @@
 import { UserContextProvider } from '@modules/auth/context/user';
+import { ChatsHeaderProvider } from '@modules/chats/context/chat';
 import { ContactsHeaderProvider } from '@modules/contacts/context/contact';
 import { ApiProvider } from '@reduxjs/toolkit/query/react';
 import { BaseApi } from '@shared/api/baseApi';
@@ -13,13 +14,15 @@ export default function RootLayout() {
             <ApiProvider api = {BaseApi}>
                 <UserContextProvider>
                     <ContactsHeaderProvider>
-                        <Stack screenOptions={{
-                            headerShown: false
-                        }}>
-                            <Stack.Screen name='index' />
-                            <Stack.Screen name='(auth)' />
-                            <Stack.Screen name = "(tabs)"/>
-                        </Stack>
+                        <ChatsHeaderProvider>
+                            <Stack screenOptions={{
+                                headerShown: false
+                            }}>
+                                <Stack.Screen name='index' />
+                                <Stack.Screen name='(auth)' />
+                                <Stack.Screen name = "(tabs)"/>
+                            </Stack>
+                        </ChatsHeaderProvider>
                     </ContactsHeaderProvider>
                 </UserContextProvider>
             </ApiProvider>
